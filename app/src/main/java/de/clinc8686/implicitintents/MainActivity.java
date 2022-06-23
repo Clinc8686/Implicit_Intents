@@ -6,6 +6,7 @@ import androidx.core.app.ShareCompat;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -61,5 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 .setChooserTitle("Share this text with: ")  //The title that appears on the system app chooser.
                 .setText(txt)       //The actual text to be shared
                 .startChooser();    //Show the system app chooser and send the Intent.
+    }
+
+    public void takePicture(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivity(takePictureIntent);
     }
 }
