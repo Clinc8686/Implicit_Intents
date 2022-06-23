@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
         String url = mWebsiteEditText.getText().toString();
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        Intent intentChooser = Intent.createChooser(intent, "Choose browser");
 
         // Find an activity to hand the intent and start that activity.
-        if (intent.resolveActivity(getPackageManager()) != null) {
+        if (intentChooser.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
             Log.d("ImplicitIntents", "Can't handle this!");
@@ -42,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
         String loc = mLocationEditText.getText().toString();
         Uri addressUri = Uri.parse("geo:0,0?q=" + loc);
         Intent intent = new Intent(Intent.ACTION_VIEW, addressUri);
+        Intent intentChooser = Intent.createChooser(intent, "Choose application");;
 
-        if (intent.resolveActivity(getPackageManager()) != null) {
+        if (intentChooser.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
             Log.d("ImplicitIntents", "Can't handle this intent!");
